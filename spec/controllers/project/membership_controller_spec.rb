@@ -21,9 +21,10 @@ describe Project::MembershipController do
       @user    = FactoryGirl.create(:user)
     end
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       post :join, project_id: @project.to_param
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
       expect(@project.memberships.count).to eql(1)
     end
 
@@ -51,9 +52,10 @@ describe Project::MembershipController do
   describe "#update" do
     before(:each) { @membership = FactoryGirl.create(:membership) }
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       patch :update, project_id: @membership.project.to_param, membership: {send_comment_emails: '1'}
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
       expect(@membership.reload.send_comment_emails).to be_false
     end
 
@@ -77,9 +79,10 @@ describe Project::MembershipController do
   describe "#destroy" do
     before(:each) { @membership = FactoryGirl.create(:membership) }
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       delete :destroy, project_id: @membership.project.to_param
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
     end
 
     it "should not allow the owner to delete his/her project" do

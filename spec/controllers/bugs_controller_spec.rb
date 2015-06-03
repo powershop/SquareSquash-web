@@ -46,9 +46,10 @@ describe BugsController do
       bugs
     end
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       get :index, polymorphic_params(@env, true)
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
     end
 
     context '[authenticated]' do
@@ -175,9 +176,10 @@ describe BugsController do
       repo = double('Git::Repo')
     end
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       get :show, polymorphic_params(@bug, false)
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
     end
 
     context '[authenticated]' do
@@ -198,9 +200,10 @@ describe BugsController do
   describe "#update" do
     before(:each) { @bug = FactoryGirl.create(:bug) }
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       patch :update, polymorphic_params(@bug, false, bug: {fixed: 'true'})
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
       expect(@bug.reload).not_to be_fixed
     end
 
@@ -285,9 +288,10 @@ describe BugsController do
   describe "#destroy" do
     before(:each) { @bug = FactoryGirl.create(:bug) }
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       delete :destroy, polymorphic_params(@bug, false)
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
       expect { @bug.reload }.not_to raise_error
     end
 

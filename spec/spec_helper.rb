@@ -64,6 +64,29 @@ def login_as(user)
   session[:user_id] = user.id
 end
 
+# Common login-testing strategies in the specs
+#
+# @param [*args] Args to pass to #get
+if Squash::Configuration.authentication.strategy == 'google'
+  RSpec.shared_context "setup for required logged-in user" do
+    unless Squash::Configuration.authentication.strategy == 'google'
+      def login_required_redirection_url(*args)
+        login_url(*args)
+      end
+
+    else
+      before :each do
+        allow(SecureRandom).to receive(:hex).and_return('1234')
+      end
+
+      def login_required_redirection_url(*args)
+        controller.instance_eval { google_authentication_uri }
+      end
+    end
+
+  end
+end
+
 # Returns the parameters that would be created when a polymorphic route is hit
 # corresponding to the given model object.
 #

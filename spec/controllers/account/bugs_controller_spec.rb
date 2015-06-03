@@ -22,9 +22,10 @@ describe Account::BugsController do
       bugs
     end
 
+    include_context "setup for required logged-in user"
     it "should require a logged-in user" do
       get :index
-      expect(response).to redirect_to(login_url(next: request.fullpath))
+      expect(response).to redirect_to(login_required_redirection_url(next: request.fullpath))
     end
 
     context '[authenticated]' do
