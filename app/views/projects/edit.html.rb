@@ -413,6 +413,19 @@ end
             p "If you uncheck this, PagerDuty will not be notified of any new occurrences. Acknowledgements and resolutions of existing incidents will still be sent.", class: 'help-block'
           end unless Squash::Configuration.pagerduty.disabled
 
+          fieldset do
+            h5 "Beetil integration"
+
+            p "Squash can have the ability to create a Beetil incident from a bug. Creating a Beetil incident will link it to the bug."
+
+            f.label :beetil_service_key
+            f.text_field :beetil_service_key
+            p "Set this to a non empty value to enable creation of new Beetil incidents"
+
+            select id: 'beetil-projects', name: 'beetil-projects', disabled: 'disabled'
+            p "Don't know the service key? Here's a list"
+          end
+
           div(class: 'form-actions') { f.submit class: 'default' }
         end
       end
