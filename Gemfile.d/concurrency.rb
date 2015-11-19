@@ -18,7 +18,7 @@ conditionally('concurrency.background_runner', 'Resque') do
 end
 
 conditionally('concurrency.background_runner', 'Sidekiq') do
-  gem 'sidekiq'
+  gem 'sidekiq', '< 4'
   gem 'capistrano-sidekiq'
 
   # disable if you don't need Sidekiq monitoring
