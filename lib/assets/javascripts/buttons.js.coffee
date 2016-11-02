@@ -31,6 +31,7 @@ jQuery.fn.autoButton =  ->
           form = $('<form/>').attr(action: button.attr('href'), method: 'POST')
           $('<input/>').attr(type: 'hidden', name: '_method', value: button.data('sqmethod')).appendTo form
           $('<input/>').attr(type: 'hidden', name: $('meta[name=csrf-param]').attr('content'), value: $('meta[name=csrf-token]').attr('content')).appendTo form
+          form.appendTo document.body
           form.submit()
         else
           window.location = button.attr('href')
