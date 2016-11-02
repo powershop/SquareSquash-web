@@ -28,7 +28,7 @@ class root.SearchBar
     this.hideSuggestions()
 
     @element.keypress (event) =>
-      if event.charCode == 13
+      if event.key == "Enter"
         this.search()
         event.preventDefault(); event.stopPropagation(); return false
       return true
