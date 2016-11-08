@@ -22,10 +22,14 @@ module Blamer
         b.deploy = deploy
         b
       else
+        escape = '\\'
+        pattern = Regexp.union(escape, "%", "_")
+
         occurrence.message = occurrence.message.gsub(/\A"/, '').gsub(/"\Z/, '').strip
         json_message = ActiveSupport::JSON.encode(occurrence.message)
+        sanitized_message = json_message.gsub(pattern) { |x| [escape, x].join }
 
-        occurrences = environment.occurrences.where("\"occurrences\".\"metadata\" LIKE ?", "%#{json_message}%").joins(:bug).where(bugs: bug_search_criteria)
+        occurrences = environment.occurrences.where("\"occurrences\".\"metadata\" LIKE ?", "%#{sanitized_message}%").joins(:bug).where(bugs: bug_search_criteria)
 
         if occurrences.empty?
           environment.bugs.create! bug_attributes.merge(bug_search_criteria).merge(class_name: occurrence.bug.class_name)
