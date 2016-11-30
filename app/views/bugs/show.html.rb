@@ -240,7 +240,6 @@ module Views
             f.select :assigned_user_id, @project.members.order('username ASC').map { |u| ["#{u.username} (#{u.name})", u.id] }, include_blank: true
 
             div do
-              f.label :jira_issue
               div(class: 'field-group') do
                 span(class: 'input-append') do
                   f.text_field :jira_issue, placeholder: "PROJECT-123", size: 14

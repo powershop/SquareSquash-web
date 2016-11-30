@@ -393,7 +393,7 @@ class BugsController < ApplicationController
     params.require(:bug).permit(:assigned_user, :assigned_user_id,
                                 :resolution_revision, :fixed, :fix_deployed,
                                 :irrelevant, :duplicate_of, :duplicate_of_id,
-                                :jira_isssue, :jira_status_id, :page_threshold,
+                                :jira_issue, :jira_status_id, :page_threshold,
                                 :beetil_number,
                                 :page_period)
   end
