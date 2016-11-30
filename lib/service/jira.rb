@@ -70,7 +70,7 @@ module Service
     # @return [Array<JIRA::Resource::Project>] All known JIRA projects.
     def projects() client.Project.all end
 
-    def url(path)
+    def url(path = "")
       "#{Squash::Configuration.jira.api_host}#{Squash::Configuration.jira.api_root}#{path}"
     end
 

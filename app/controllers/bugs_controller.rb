@@ -386,6 +386,7 @@ class BugsController < ApplicationController
         notify_on_deploy:     bug.notify_on_deploy.include?(current_user.id),
         notify_on_occurrence: bug.notify_on_occurrence.include?(current_user.id),
         beetil_number:        bug.beetil_number || "",
+        jira_issue:           bug.jira_issue || "",
     )
   end
 

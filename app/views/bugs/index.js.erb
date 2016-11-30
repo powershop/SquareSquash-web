@@ -40,6 +40,9 @@ $(document).ready(function() {
                                     // TODO link to beetil
                                     return bug.beetil_number;
                                   } },
+                                  { title: "Ticket", sortable: false, htmlGenerator: function(bug) {
+                                    return $('<a/>').attr('href', getJiraTicketUrl(bug.jira_issue)).text(bug.jira_issue).attr('target', '_blank');
+                                  } },
                                 ],
                                 {
                                   sort_key:    'latest',
@@ -54,6 +57,10 @@ $(document).ready(function() {
     var spinner = $('<i/>').addClass('fa fa-refresh').appendTo($('#filter').find('>p:first-child'));
     table.refreshData(function() { spinner.remove(); }, true);
   };
+
+  var getJiraTicketUrl = function(key) {
+    return "<%= Service::JIRA.url%>/browse/" + key;
+  }
 
   // changing a filter value refreshes the table
   $('#filter').find('select').change(refresh);
