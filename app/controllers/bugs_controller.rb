@@ -386,6 +386,7 @@ class BugsController < ApplicationController
         notify_on_deploy:     bug.notify_on_deploy.include?(current_user.id),
         notify_on_occurrence: bug.notify_on_occurrence.include?(current_user.id),
         beetil_number:        bug.beetil_number || "",
+        jira_issue:           bug.jira_issue || "",
     )
   end
 
@@ -393,7 +394,7 @@ class BugsController < ApplicationController
     params.require(:bug).permit(:assigned_user, :assigned_user_id,
                                 :resolution_revision, :fixed, :fix_deployed,
                                 :irrelevant, :duplicate_of, :duplicate_of_id,
-                                :jira_isssue, :jira_status_id, :page_threshold,
+                                :jira_issue, :jira_status_id, :page_threshold,
                                 :beetil_number,
                                 :page_period)
   end
