@@ -40,9 +40,6 @@ class BugsController < ApplicationController
   # Number of Bugs to return per page.
   PER_PAGE          = 50
 
-  # The ID that identifies the "issue type"
-  JIRA_ISSUE_TYPE_ID = 10200
-
   before_filter :find_project
   before_filter :find_environment
   before_filter :find_bug, except: [:index, :count, :notify_deploy, :notify_occurrence]
@@ -181,7 +178,7 @@ class BugsController < ApplicationController
                                                                  revision:   @bug.revision,
                                                                  url:        project_environment_bug_url(@project, @environment, @bug),
                                                                  locale:     @bug.environment.project.locale),
-                                                  issuetype:     JIRA_ISSUE_TYPE_ID)
+                                                  issuetype:   1)
 
     respond_with @project, @environment, @bug.as_json.merge(watched: current_user.watches?(@bug))
   end
