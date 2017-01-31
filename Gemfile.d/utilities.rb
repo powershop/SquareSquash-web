@@ -13,7 +13,7 @@
 #    limitations under the License.
 
 gem 'json'
-gem 'git', github: 'RISCfuture/ruby-git'
+gem 'git'
 gem 'user-agent'
 
 gem 'safe_yaml'
