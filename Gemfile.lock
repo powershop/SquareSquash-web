@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/RISCfuture/erector.git
+  remote: git@git.powershop.co.nz:dylan/erector.git
   revision: d741e01ba7f16fef30abfa424cc72d2b2b4758e2
   specs:
     erector (0.9.0)
       treetop (>= 1.2.3)
 
 GIT
-  remote: git://github.com/RISCfuture/ruby-git.git
+  remote: git@git.powershop.co.nz:dylan/ruby-git.git
   revision: 88076a50eb70fd96f2417b646fe37fb2f6c4cca4
   specs:
     git (1.2.6)
@@ -269,7 +269,7 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.2)
     timeliness (0.3.8)
-    treetop (1.6.5)
+    treetop (1.6.8)
       polyglot (~> 0.3)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -342,4 +342,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.12.0.pre.2
+   1.14.3
