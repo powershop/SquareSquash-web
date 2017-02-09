@@ -13,7 +13,7 @@
 #    limitations under the License.
 
 gem 'json'
-gem 'git', github: 'RISCfuture/ruby-git'
+gem 'git', :git => 'git@git.powershop.co.nz:dylan/ruby-git.git'
 gem 'user-agent'
 
 gem 'safe_yaml'
