@@ -14,6 +14,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    SyslogLogger (2.0)
     actionmailer (4.2.5.2)
       actionpack (= 4.2.5.2)
       actionview (= 4.2.5.2)
@@ -287,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SyslogLogger
   activerecord-jdbcpostgresql-adapter
   byebug
   capistrano-sidekiq

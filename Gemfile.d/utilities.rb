@@ -17,3 +17,5 @@ gem 'git', :git => 'git@git.powershop.co.nz:dylan/ruby-git.git'
 gem 'user-agent'
 
 gem 'safe_yaml'
+
+gem 'SyslogLogger'
