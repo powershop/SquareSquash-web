@@ -7,6 +7,6 @@ authentication:
   token: vJKdCKuYLIZnXrzQjzCVJsorvOx9wgPc
   secret: <%= ENV["JIRA_SQUASH_SECRET"] %>
 
-api_host: "https://jira.powershophq.com"
+api_host: "https://jira.fluxfederation.com"
 api_root: ""
 create_issue_details: "/secure/CreateIssueDetails!init.jspa"
